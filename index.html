@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="culte.png" type="image/x-icon">
+	<meta charset="utf-8" name='viewport' content='initial-scale=1.0'/>
+	<title>
+		Statistique culte d'enfant
+	</title>
+	<link rel="stylesheet" type="text/css" href="css.css"/>
+</head>
+<body>
+	<div id='menu'>
+		<img src="../emplois de temps/plus.png" id='plus'/>
+		<div >Stat Culte d'Enfant</div>
+	</div>
+	<div id='plu' style='left:-250px'>
+		<h1>
+			Bienvenus dans la plateforme statistique du culte d'enfant. moi c'est Tonton morel. Je reponds au +237 698508833
+		</h1>
+		<ul>
+			<li>
+				Enregistrer les informations de vos cultes dans la partie <b>info du culte</b>
+			</li>
+			<li>
+				Copier ou Supprimer un enregistrement dans le tableau en cliquant sur la colonne <b>date</b> de l'enregistrement souhaité
+			</li>
+		</ul>
+		<p>
+			<button onclick='recherche.style.display="";pl()'>Recherche</button>
+		</p>
+		<p>
+			<button onclick='authenti.style.display="";smooth();pl()'>Se connecter a un autre compte</button><br/><br/><br/>
+		</p>
+	</div>
+	<div class='loa' id='plu_div' style='display:none'></div>
+	<div class='bod'><center>
+		<div class='body' id='authenti'>
+			<h1>Authentification</h1>
+			<form id="authen">
+				<p><input id='au' type="text" required placeholder="Nom Paroisse" name='nom' /></p>
+				<p><input id='au' type="text" required placeholder="Mot de passe" name='code' /></p>
+				<p style='text-align:center'>
+					<button id='aut'>Envoyer</button>
+				</p>
+			</form>
+			<p style='text-align:left;margin-left:30px'>
+				<button onclick='authenti.style.display="none";inscription.style.display="";error.style.display="none"'>S'inscrire</button>
+			</p>
+		</div>
+		<div class='body' id='inscription' style='display:none'>
+			<h1>Inscription</h1>
+			<form id="inscrip">
+				<p><input type="text" name='nom' id='ins' required placeholder="Nom Paroisse" /></p>
+				<p><input type="text" id='ins' name='code' required placeholder="Mot de passe" /></p>
+				<p style='text-align:center'>
+					<button>Envoyer</button>
+				</p>
+			</form>
+			<p style='text-align:left;margin-left:30px'>
+				<button onclick='authenti.style.display="";inscription.style.display="none";error.style.display="none"'>Se connecter</button>
+			</p>
+		</div>
+		<div class='body' id='error' style='display:none'>
+			<div id='in_error' style='width:calc(100% - 40px);border-radius:20px;background:rgba(255,50,50,0.7);padding:20px;line-height: 30px;color:white'></div>
+		</div>
+		<div id='body'>
+			<h1 id='inf' style='padding:10px;border-bottom:1px solid black;'>
+				Info du culte
+			</h1>
+			<div class="body" >
+			<form id='form' method='post'>
+			<p><input id='input' type="date" required name="date" placeholder="entrer la date"/></p>
+			<p><input id='input'  type="text" required name="lecon" placeholder="titre de la leçons"/></p>
+			<p><input id='input' type="number" required name="ef_g" placeholder="effectif garcons"/></p>
+			<p><input id='input' type="number" required name="ef_f" placeholder="effectif fille"/></p>
+			<p><input id='input' type="number" required name="ef_m" placeholder="effectif moniteur"/></p>
+			<p><input id='input' type="number" required name="of_g" placeholder="offrande garçons"/></p>
+			<p><input id='input' type="number" required name="of_f" placeholder="offrande fille"/></p>
+			<p><input id='input' type="number" required name="of_m" placeholder="offrande moniteur"/></p>
+			<p>
+				<textarea id='input'  type="text" required name="m_p" placeholder="moniteurs presents"></textarea>
+			</p>
+			<p>
+				<textarea id='input' type='text'  name="ob" placeholder="Qu'es ce que vous avez remarqué"></textarea>
+			</p>
+			<p align='center'><button id='ok'>Enregistrer</button></p>
+			</form>
+			</div>
+			<h1  style='padding:10px;border-bottom:1px solid black;'>
+				Tableaux statistques
+			</h1>
+			<div id="tab3" align='center'>
+			</div>
+			<center><button onclick="imprimer()">Imprimer</button></center>
+			<br/>
+			<h1  style='padding:10px;border-bottom:1px solid black;'>
+				Commentaire
+			</h1>
+			<div class="body">
+				<form id='commentaire'>
+					<p><input type="text" id='commen' required style='text-align:center' placeholder="entre ton pseudo" /></p>
+					<p><textarea id='commen' required placeholder="Ecrire ton message."></textarea></p>
+					<center><button>Envoyer</button></center>
+				</form>
+				<div id='aff_commentaire' align='center'>
+					
+				</div>
+			</div>
+		<br/><br/><br/>
+		<table style='display:none' class='table'></table>	
+
+	</div></center>
+	</div>
+	<div id='load' class='loa'>
+		<img src="load.gif" class='load'/>
+	</div>
+	<div id="recherche" class='loa' style='overflow-y: scroll'>
+		<img src="../emplois de temps/moins.png" onclick='recherche.style.display="none"' style='cursor:pointer;position:fixed;left:calc(100% - 50px);top:20px'/>
+		<div class='b_recherche'>
+			<h1>Recherche</h1>
+			<input type="date" id='rech' onchange='search(this)' onkeyup="search(this)" /><br/><br/>
+			<div id="resultat" align='center'></div>
+		</div>
+	</div>
+	<script src='../emplois de temps/pdf.js'></script>
+	<script src='js.js'></script>
+</body>
+</html>
